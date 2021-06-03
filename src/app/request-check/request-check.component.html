@@ -1,0 +1,24 @@
+<h1>Request List</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Request Id</th>
+    <th>User Name</th>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Approved?</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let request of requestList">
+    <td>{{request.id}}</td>
+    <td>{{request.user.username}}</td>
+    <td>{{request.date | date: 'MM/dd/yyyy - hh:mm'}}</td>
+    <td>{{request.description}}</td>
+    <td>{{request.confirmed}}</td>
+    <td [hidden]="request.confirmed"><a (click)="confirmRequest(request.id)" style="cursor: pointer;">Approve</a></td>
+  </tr>
+  </tbody>
+</table>
